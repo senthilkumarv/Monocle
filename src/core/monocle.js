@@ -14,3 +14,4 @@ Monocle.Dimensions = {};
 Monocle.Controls = {};
 Monocle.Flippers = {};
 Monocle.Panels = {};
+Monocle.Utils = {};

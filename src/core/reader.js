@@ -64,7 +64,10 @@ Monocle.Reader = function (node, bookData, options, onLoadCallback) {
 
     // After the reader has been resized, this resettable timer must expire
     // the place is restored.
-    resizeTimer: null
+    resizeTimer: null,
+
+    // Scale factor on webkit browsers
+    webkitScaleFactor: Monocle.Utils.calcWebkitScaleFactor(document)
   }
 
   var dom;
@@ -300,6 +303,7 @@ Monocle.Reader = function (node, bookData, options, onLoadCallback) {
 
   function performResize() {
     lockFrameWidths();
+    p.webkitScaleFactor = Monocle.Utils.calcWebkitScaleFactor(document);
     recalculateDimensions(true, afterResized);
   }
 

@@ -4,6 +4,7 @@
 //= require ./compat/stubs
 //= require ./compat/browser
 //= require ./compat/gala
+//= require ./compat/utils
 //= require ./core/bookdata
 //= require ./core/factory
 //= require ./core/events
