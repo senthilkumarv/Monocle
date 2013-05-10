@@ -97,8 +97,17 @@ Monocle.Dimensions.Columns = function (pageDiv) {
     var elem = p.page.m.sheafDiv;
     var w = elem.clientWidth;
     if (elem.getBoundingClientRect) { w = elem.getBoundingClientRect().width; }
+    w *= getElementZoom(document.body);
     if (Monocle.Browser.env.roundPageDimensions) { w = Math.round(w); }
     return { col: w, width: w + k.GAP, height: elem.clientHeight }
+  }
+
+
+  function getElementZoom(elem) {
+    var doc = elem.ownerDocument;
+    var dv = doc.defaultView;
+    var z = dv.getComputedStyle(doc.body, null).getPropertyValue('zoom');
+    return parseFloat(z) || 1.0;
   }
 
 
