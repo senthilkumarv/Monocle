@@ -445,6 +445,17 @@ Monocle.Flippers.Slider = function (reader) {
     p.reader.dom.find('flippers_slider_wait', 1).style.opacity = 0;
   }
 
+  function flipNextPage() {
+    var pos = p.panels.properties.panels["forwards"].properties.div.getBoundingClientRect().left;
+    lift(k.FORWARDS, pos);
+    release(k.FORWARDS, pos);
+  }
+
+  function flipPreviousPage() {
+    var pos = p.panels.properties.panels["backwards"].properties.div.getBoundingClientRect().left;
+    lift(k.BACKWARDS, pos);
+    release(k.BACKWARDS, pos);
+  }
 
   // THIS IS THE CORE API THAT ALL FLIPPERS MUST PROVIDE.
   API.pageCount = p.pageCount;
@@ -452,6 +463,9 @@ Monocle.Flippers.Slider = function (reader) {
   API.getPlace = getPlace;
   API.moveTo = moveTo;
   API.listenForInteraction = listenForInteraction;
+  API.flipNextPage = flipNextPage;
+  API.flipPreviousPage = flipPreviousPage;
+
 
   // OPTIONAL API - WILL BE INVOKED (WHERE RELEVANT) IF PROVIDED.
   API.visiblePages = visiblePages;
@@ -460,7 +474,6 @@ Monocle.Flippers.Slider = function (reader) {
 
   return API;
 }
-
 
 // Constants
 Monocle.Flippers.Slider.DEFAULT_PANELS_CLASS = Monocle.Panels.TwoPane;

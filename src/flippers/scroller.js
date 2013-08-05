@@ -108,6 +108,17 @@ Monocle.Flippers.Scroller = function (reader, setPageFn) {
     p.reader.dispatchEvent('monocle:turn');
   }
 
+  function flipNextPage() {
+    var pos = p.panels.properties.panels["forwards"].properties.div.getBoundingClientRect().left;
+    lift(k.FORWARDS, pos);
+    release(k.FORWARDS, pos);
+  }
+
+  function flipPreviousPage() {
+    var pos = p.panels.properties.panels["backwards"].properties.div.getBoundingClientRect().left;
+    lift(k.BACKWARDS, pos);
+    release(k.BACKWARDS, pos);
+  }
 
   // THIS IS THE CORE API THAT ALL FLIPPERS MUST PROVIDE.
   API.pageCount = p.pageCount;
@@ -115,6 +126,8 @@ Monocle.Flippers.Scroller = function (reader, setPageFn) {
   API.getPlace = getPlace;
   API.moveTo = moveTo;
   API.listenForInteraction = listenForInteraction;
+  API.flipNextPage = flipNextPage;
+  API.flipPreviousPage = flipPreviousPage;
 
   initialize();
 

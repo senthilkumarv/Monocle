@@ -613,6 +613,13 @@ Monocle.Reader = function (node, bookData, options, onLoadCallback) {
     API.billboard.show(info, { closeButton: false, from: bbOrigin });
   }
 
+  function moveNext() {
+    p.flipper.flipNextPage();
+  }
+
+  function movePrevious() {
+    p.flipper.flipPreviousPage();
+  }
 
   API.getBook = getBook;
   API.getPlace = getPlace;
@@ -628,6 +635,8 @@ Monocle.Reader = function (node, bookData, options, onLoadCallback) {
   API.listen = listen;
   API.deafen = deafen;
   API.visiblePages = visiblePages;
+  API.moveNext = moveNext;
+  API.movePrevious = movePrevious;
 
   // Deprecated!
   API.addPageStyles = addPageStyles;
